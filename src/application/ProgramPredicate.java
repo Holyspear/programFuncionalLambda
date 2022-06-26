@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Predicate;
 
 import model.entities.Product;
 
@@ -18,8 +19,11 @@ public class ProgramPredicate {
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
 		
-		//Implementando através de um método NÃO estático na classe Product
-		list.removeIf(Product::nonstaticProductPredicate);
+		//Instancia um Product Predicate para utilizar expressão Lambda
+		Predicate<Product> pred = p -> p.getPrice() >= 100;
+		
+		//Implementando de uma declaração de Predicado do Produto no escopo do programa
+		list.removeIf(pred);
 		
 		for (Product product : list) {
 			System.out.println(product);
