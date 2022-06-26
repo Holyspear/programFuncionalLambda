@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 
 import model.entities.Product;
+import model.services.ProductService;
 
 public class Program {
 
@@ -13,30 +14,27 @@ public class Program {
 		Locale.setDefault(Locale.US);
 
 		List<Product> list = new ArrayList<>();
-
-		list.add(new Product("TV", 900.00));
-		list.add(new Product("Notebook", 1200.00));
-		list.add(new Product("Tablet", 450.00));
-
-		// Declarar um Comparator utilizando sintaxe de FUNÇÃO anônima,
-		// agora não preciso mais da CLASSE, posso utilizar função LAMBDA para isso.
-		// A seta para uma função lambda se chama ArrowFunction.
-		/*
-		 * Comparator<Product> comp = (product1, product2) -> { return
-		 * product1.getName().toLowerCase().compareTo(product2.getName().toLowerCase());
-		 * };
-		 */
-
-		// Pra finalizar, fizemos o cleanCode para uma função LAMBDA na íntegra.
-		// Eliminamos a instanciação da classe Comparator
-		// Incluimos dois argumentos de função product1 e product2
-		// O Compilador vai comparar o tipo da List e jogar para os argumentos
-		// O ArrowFunction vai executar a função com os argumentos e efetuar o return
-		// automático
-		list.sort((product1, product2) -> product1.getName().toLowerCase().compareTo(product2.getName().toLowerCase()));
-
-		for (Product product : list) {
-			System.out.println(product);
-		}
+		list.add(new Product("Tv", 900.00));
+		list.add(new Product("Mouse", 50.00));
+		list.add(new Product("Tablet", 350.50));
+		list.add(new Product("HD Case", 80.90));
+		
+		ProductService productService = new ProductService();
+		
+		double sum = productService.filteredSum(list);
+		System.out.println("Total dos preços de produtos com a letra T: R$ " + String.format("%.2f", sum));
+		
+		//Utilizando agora a abstração do predicado para criar ele no programa principal		
+		double sum2 = productService.filteredSumGeneric(list, product -> product.getName().charAt(0) == 'T');
+		System.out.println("Total dos preços com Infusão de Predicado com a letra T: R$ " + String.format("%.2f", sum2));
+		
+		//Modificando o predicado para letra M
+		double sum3 = productService.filteredSumGeneric(list, product -> product.getName().charAt(0) == 'M');
+		System.out.println("Total dos preços com Infusão de Predicado com a letra M: R$ " + String.format("%.2f", sum3));
+		
+		//Modificando o predicado para produtos menor que 100
+		double sum4 = productService.filteredSumGeneric(list, product -> product.getPrice() < 100);
+		System.out.println("Total dos preços com Infusão de Predicado Produtos menor que 100: R$ " + String.format("%.2f", sum4));		
+		
 	}
 }
