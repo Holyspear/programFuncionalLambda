@@ -13,8 +13,8 @@ public class ProgramProductConsumer {
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
 		
-		//Método estático implementando Consumer na classe Product
-		list.forEach(Product::StaticPriceUpdate);
+		//Método NÃO estático implementando Consumer na classe Product
+		list.forEach(Product::nonStaticPriceUpdate);
 		//Nova forma de imprimir uma coleção utilizando Lambda
 		//Isso porque o println é um método estático da classe System
 		list.forEach(System.out::println);

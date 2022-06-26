@@ -47,4 +47,8 @@ public class Product {
 	public static void StaticPriceUpdate(Product product) {
 		product.setPrice(product.getPrice()*1.1);		
 	}
+	//Método não estático substituindo interface Comsumer
+	public void nonStaticPriceUpdate() {
+		setPrice(getPrice()*1.1);
+	}
 }
