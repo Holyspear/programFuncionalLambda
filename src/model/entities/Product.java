@@ -5,7 +5,7 @@ public class Product {
 	private String name;
 	private Double price;
 	
-	public Product() {
+	public Product(){
 		
 	}
 
@@ -29,7 +29,7 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
+	//Com método estático não preciso implementar a interface Predicate
 	public static boolean staticProductPredicate(Product product) {
 		return product.getPrice() >= 100.0;
 	}
@@ -42,5 +42,9 @@ public class Product {
 	@Override
 	public String toString() {
 		return getName() + ", " + String.format("%.2f", getPrice());
+	}
+	//Com método estático não preciso implementar a interface Consumer
+	public static void StaticPriceUpdate(Product product) {
+		product.setPrice(product.getPrice()*1.1);		
 	}
 }
