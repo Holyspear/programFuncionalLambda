@@ -51,4 +51,13 @@ public class Product {
 	public void nonStaticPriceUpdate() {
 		setPrice(getPrice()*1.1);
 	}
+	//Com método estático não preciso implementar a interface Function<R,T>
+	public static String staticUperCaseName(Product product) {
+		return product.getName().toUpperCase();
+	}
+	//Com método não estático não preciso implementar a interface Function<R,T>
+	public String nonStaticUperCaseName() {
+		return getName().toUpperCase();
+	}
+	
 }
