@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Locale;
 
 import model.entities.Product;
-import model.util.ProductPredicate;
 
 public class ProgramPredicate {
 
@@ -19,8 +18,8 @@ public class ProgramPredicate {
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
 		
-		//Implementando interface Predicate com a classe Funcional ProductPredicate
-		list.removeIf(new ProductPredicate());
+		//Implementando através de um método estático na classe Product
+		list.removeIf(Product::staticProductPredicate);
 		
 		for (Product product : list) {
 			System.out.println(product);

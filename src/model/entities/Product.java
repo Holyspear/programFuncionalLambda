@@ -29,6 +29,11 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	public static boolean staticProductPredicate(Product product) {
+		return product.getPrice() >= 100.0;
+	}
+	
 	@Override
 	public String toString() {
 		return getName() + ", " + String.format("%.2f", getPrice());
