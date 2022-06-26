@@ -33,6 +33,11 @@ public class Product {
 	public static boolean staticProductPredicate(Product product) {
 		return product.getPrice() >= 100.0;
 	}
+	//Método não estático trabalha com a própria instância.
+	//Por isso não há necessidade de argumento de um Product.
+	public boolean nonstaticProductPredicate() {
+		return getPrice() >= 100.0;
+	}
 	
 	@Override
 	public String toString() {

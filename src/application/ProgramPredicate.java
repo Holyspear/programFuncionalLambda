@@ -18,8 +18,8 @@ public class ProgramPredicate {
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
 		
-		//Implementando através de um método estático na classe Product
-		list.removeIf(Product::staticProductPredicate);
+		//Implementando através de um método NÃO estático na classe Product
+		list.removeIf(Product::nonstaticProductPredicate);
 		
 		for (Product product : list) {
 			System.out.println(product);
